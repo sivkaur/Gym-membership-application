@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "mssql5": {
+      "serviceConnectorResourceId": "",
+      "secretStore": "LocalSecretsFile",
+      "type": "mssql.onprem",
+<<<<<<< HEAD
+      "connectionId": "ConnectionStrings",
+=======
+      "connectionId": "ConnectionStrings:GymDbContext",
+>>>>>>> main
+      "dynamicId": null
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "",
+      "secretStore": "LocalSecretsFile",
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:MembershipDBContext",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:MembDetailDBContext"
+    }
+  }
+}

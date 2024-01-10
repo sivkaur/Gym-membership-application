@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "mssql5": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:GymDbContext",
+      "dynamicId": null
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings"
+    }
+  }
+}

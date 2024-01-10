@@ -1,0 +1,90 @@
+﻿@model FitHub.Models.Booking
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="details-content body-header d-flex justify-content-between">
+    <h2>Book an Amenity</h2>
+    <div class="navbuttons">
+        <a class="btn btn-success" asp-action="Index">Back to List</a>
+    </div>
+</div>
+<hr />
+<br />
+<div class="body-content">
+    <div class="body-content">
+        <strong>
+            Please select an amenity from the dropdown list,
+            choose a date and choose how many people you would like to book it for.
+        </strong>
+        <br /><br/>
+        <div class="row">
+            <div class="col-md-5">
+                <form asp-action="Create">
+                    <div class="form-group">
+                        <label class="control-label">Amenity Name</label>
+                        <select asp-for="AmenityID" class="form-control" asp-items="ViewBag.AmenityID"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BookingDate" class="control-label"></label>
+                        <input asp-for="BookingDate" class="form-control" />
+                        <span asp-validation-for="BookingDate" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label asp-for="NumberOfPeople" class="control-label"></label>
+                            <input asp-for="NumberOfPeople" class="form-control" type="number" />
+                            <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Cost (CAD)</label>
+                            <input asp-for="AmountPaid " class="form-control" readonly />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6"> </div>
+                        <div class="form-group col-md-6">
+                            <input type="submit" value="Proceed to Payment" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-6 word-wrap">
+                @* <h6>
+                    Please select an amenity from the dropdown list,
+                    choose a date and choose how many people you would like to book it for
+                </h6> *@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function updateAmount() {
+            var data = @Html.Raw(Json.Serialize(ViewBag.Rates));
+            console.log(data);
+            var amenityName = $('#AmenityID').val();
+            console.log("AmenityName: " + amenityName);
+            var numOfPeople = parseInt($('#NumberOfPeople').val()) || 0;
+            console.log("numOfPeople: " + numOfPeople);
+            if (data) {
+                var amount = data[amenityName] * numOfPeople;
+                console.log(amount)
+                $("#AmountPaid").val(amount);
+            } else {
+                $("#AmountPaid").val('');
+            }
+        }
+
+        $("#AmenityID, #NumberOfPeople").on('input', updateAmount);
+        $("#UserID").ready(function () { });
+        updateAmount();
+    </script>
+
+}

@@ -1,0 +1,48 @@
+﻿@model FitHub.Models.Booking
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class=" body-header d-flex justify-content-between">
+    <h2>Booking Detail</h2>
+    <div class="navbuttons">
+        <a class="btn btn-success" asp-action="Index">Back to List</a>
+    </div>
+</div>
+<hr />
+
+<div class="body-content">
+    <ul class="list-group list-group-flush body-content">
+        <li class="list-group-item d-flex align-items-center flex-wrap">
+            <h6 class="mb-0 col-sm-4">
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </h6 class = "col-sm-6">
+            <span class="text-secondary">@Html.DisplayFor(model => model.BookingDate)</span>
+        </li>
+        <li class="list-group-item d-flex align-items-center flex-wrap">
+            <h6 class="mb-0 col-sm-4">
+                @Html.DisplayNameFor(model => model.NumberOfPeople)
+            </h6>
+            <span class="text-secondary">@Html.DisplayFor(model => model.NumberOfPeople)</span>
+        </li>
+        <li class="list-group-item d-flex align-items-center flex-wrap">
+            <h6 class="mb-0 col-sm-4">
+                @Html.DisplayNameFor(model => model.AmountPaid)
+            </h6>
+            <span class="text-secondary">@Html.DisplayFor(model => model.AmountPaid)</span>
+        </li>
+        <li class="list-group-item d-flex align-items-center flex-wrap">
+            <h6 class="mb-0 col-sm-4">
+                @Html.DisplayNameFor(model => model.PurchasedDate)
+            </h6>
+            <span class="text-secondary">@Html.DisplayFor(model => model.PurchasedDate)</span>
+        </li>
+        <li class="list-group-item d-flex align-items-center flex-wrap">
+            <h6 class="mb-0 col-sm-4">
+                @Html.DisplayNameFor(model => model.Amenity)
+            </h6>
+            <span class="text-secondary">@Html.DisplayFor(model => model.Amenity.AmenityName)</span>
+        </li>
+    </ul>
+</div>
